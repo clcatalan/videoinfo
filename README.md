@@ -1,1 +1,3 @@
-This is a project made during the progress of the online course in Electron I took
+R&D project for Electron as part of the online refresher course I took.
+
+Still need to follow proper Design prototype and implement React.
