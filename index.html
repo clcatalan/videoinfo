@@ -1,18 +1,27 @@
 <head>
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>video info</h1>
-
-    <form>
-        <div>
-            <label>Select Video</label>
-
-            <input type="file" accept="video/*">
-            <button type="submit">Get Info</button>
-
+    <div id="main-container">
+        <div id="header-container">
+            <h1>VideoINFO</h1>
         </div>
-    </form>   
+
+        <div id="form-container">
+            <form>
+                <div>
+
+                    <input type="file" accept="video/*">
+                    <button type="submit">Get Info</button>
+
+                </div>
+            </form>   
+
+            <h1 id="result"></h1>
+        </div>
+    </div>
     <script>
         const electron = require('electron')
         const {ipcRenderer} = electron;
@@ -25,6 +34,10 @@
             //.send('name of event (any)')
             ipcRenderer.send('video:submit', path);
             
+        })
+
+        ipcRenderer.on('video:get-metadata', (event, duration) => {
+            document.querySelector('#result').innerHTML = `video is ${duration} seconds`
         })
 
     </script>
